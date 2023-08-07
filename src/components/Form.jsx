@@ -1,28 +1,28 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
-import { useEffect, useState } from "react";
-import { useUrlPosition } from "../hooks/useUrlPosition";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from 'react';
+import { useUrlPosition } from '../hooks/useUrlPosition';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-import Message from "./Message";
-import Spinner from "./Spinner";
-import Button from "./Button";
-import ButtonBack from "./ButtonBack";
+import Message from './Message';
+import Spinner from './Spinner';
+import Button from './Button';
+import ButtonBack from './ButtonBack';
 
-import styles from "./Form.module.css";
-import { useCities } from "../contexts/CitiesContext";
-import { useNavigate } from "react-router-dom";
+import styles from './Form.module.css';
+import { useCities } from '../contexts/CitiesContext';
+import { useNavigate } from 'react-router-dom';
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
-    .split("")
+    .split('')
     .map((char) => 127397 + char.charCodeAt());
   return String.fromCodePoint(...codePoints);
 }
 
-const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+const BASE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 
 function Form() {
   const [lat, lng] = useUrlPosition();
@@ -30,12 +30,12 @@ function Form() {
   const navigate = useNavigate();
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
-  const [cityName, setCityName] = useState("");
-  const [country, setCountry] = useState("");
+  const [cityName, setCityName] = useState('');
+  const [country, setCountry] = useState('');
   const [date, setDate] = useState(new Date());
-  const [notes, setNotes] = useState("");
-  const [emoji, setEmoji] = useState("");
-  const [geocodingError, setGeocodingError] = useState("");
+  const [notes, setNotes] = useState('');
+  const [emoji, setEmoji] = useState('');
+  const [geocodingError, setGeocodingError] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -52,7 +52,7 @@ function Form() {
     };
 
     await createCity(newCity);
-    navigate("/app/cities");
+    navigate('/app/cities');
   }
 
   useEffect(
@@ -62,7 +62,7 @@ function Form() {
       async function fetchCityData() {
         try {
           setIsLoadingGeocoding(true);
-          setGeocodingError("");
+          setGeocodingError('');
           const response = await fetch(
             `${BASE_URL}?latitude=${lat}&longitude=${lng}`
           );
@@ -72,7 +72,7 @@ function Form() {
               "That doesn't seem to be a city. Click somewhere else."
             );
 
-          setCityName(data.city || data.locality || "");
+          setCityName(data.city || data.locality || '');
           setCountry(data.countryName);
           setEmoji(convertToEmoji(data.countryCode));
         } catch (error) {
@@ -95,7 +95,7 @@ function Form() {
 
   return (
     <form
-      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      className={`${styles.form} ${isLoading ? styles.loading : ''}`}
       onSubmit={handleSubmit}
     >
       <div className={styles.row}>
