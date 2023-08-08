@@ -1,3 +1,40 @@
 {
-  "cities": []
+  "cities": [
+    {
+      "cityName": "Cairo",
+      "country": "Egypt",
+      "emoji": "🇪🇬",
+      "date": "2023-08-08T06:33:49.136Z",
+      "notes": "",
+      "position": {
+        "lat": "30.088107753367257",
+        "lng": "31.618652343750004"
+      },
+      "id": 2
+    },
+    {
+      "cityName": "Ilanz",
+      "country": "Switzerland",
+      "emoji": "🇨🇭",
+      "date": "2023-08-08T06:33:55.190Z",
+      "notes": "",
+      "position": {
+        "lat": "46.70973594407157",
+        "lng": "9.272460937500002"
+      },
+      "id": 3
+    },
+    {
+      "cityName": "Orekhovo-Zuyevo",
+      "country": "Russian Federation (the)",
+      "emoji": "🇷🇺",
+      "date": "2023-08-08T06:34:15.542Z",
+      "notes": "",
+      "position": {
+        "lat": "55.57834467218206",
+        "lng": "38.84765625000001"
+      },
+      "id": 4
+    }
+  ]
 }

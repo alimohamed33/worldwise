@@ -1,19 +1,19 @@
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/FakeAuthContext';
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/FakeAuthContext";
 
 function ProtectedRoute({ children }) {
-  const { isAthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(
     function () {
-      if (!isAthenticated) navigate('/');
+      if (!isAuthenticated) navigate("/");
     },
-    [isAthenticated, navigate]
+    [isAuthenticated, navigate]
   );
 
-  return isAthenticated ? children : null;
+  return isAuthenticated ? children : null;
 }
 
 export default ProtectedRoute;
